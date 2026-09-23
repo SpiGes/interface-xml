@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+D: SpiGes XML-Beispieldatei: 
+Einfaches Beispiel einem Standort mit zwei Fällen sowie einem Verwaltungsstandort ohne Fälle aber mit GWL sowie einer GWL auf Unternehmensebene
+F: Fichier d'exemple XML SpiGes : 
+Exemple simple d'un site avec deux cas et d'un site administratif sans cas mais avec PIG et un PIG au niveau de l'entreprise.
+I: File di esempio SpiGes XML: 
+Semplice esempio di una sede con due casi e di una sede amministrativa senza casi ma con PEIG, nonché di una PEIG a livello aziendale.
+ -->
+<Unternehmen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.bfs.admin.ch/xmlns/gvs/spiges-data" ent_id="845724581" version="1.5">
+	<Standort burnr="52704341">
+		<Fall fall_id="5443546">
+			<Administratives burnr_gesv="7584215" abc_fall="A" geschlecht="1" alter="0" alter_U1="1" wohnort_medstat="AG01" wohnkanton="AG" nationalitaet="CHE" eintrittsdatum="20230412" eintritt_aufenthalt="1" eintrittsart="1" einw_instanz="1" liegeklasse="1" versicherungsklasse="1" admin_urlaub="0" hauptleistungsstelle="M300" grundversicherung="1" tarif="1" austrittsdatum="20230415" austrittsentscheid="1" austritt_aufenthalt="1" austritt_behandlung="1" sekundaertransport="1"/>
+			<Neugeborene geburtszeit="1645" vitalstatus="0" mehrling="1" geburtsrang="1" geburtsgewicht="3450" laenge="45" missbildungen="0" fall_id_mutter="1456466546" gestationsalter1="382" gestationsalter2="396" vorh_schwanger="2" vorh_lebendgeburten="1" vorh_fehlgeburten="1" vorh_abbrueche="0" kopfumfang="32"/>
+			<KostentraegerFall ktr_typ="1" ktr_60="9840" ktr_480="123" ktr_485="45" ktr_486="45" ktr_10="123" ktr_20="20" ktr_21="441" ktr_23="58" ktr_27="3521" ktr_30="2155" ktr_35="456" ktr_36="715" ktr_39="2100" ktr_41="455" ktr_42="211" ktr_43="188" ktr_10_ank="12" ktr_20_ank="2" ktr_21_ank="38" ktr_23_ank="4" ktr_27_ank="301" ktr_30_ank="220" ktr_35_ank="38" ktr_36_ank="80" ktr_39_ank="231" ktr_41_ank="40" ktr_42_ank="21" ktr_43_ank="22" ktr_44_vkl="1184" ktr_44_rekole="997" ktr_al_vvg="251" ktr_kosten_65="27.30"/>
+			<Diagnose diagnose_kode="Z380" diagnose_id="1"/>
+			<Behandlung behandlung_id="1" behandlung_chop="73.5" behandlung_beginn="202304121035">
+				<Operierende op_gln="7601000899958" op_liste="0" op_rolle="2"/>
+			</Behandlung>
+			<Rechnung rech_id="1" rech_kostentraeger="0" rech_versicherer="1245124139842" rech_betrag="2457.54" rech_tariftyp="010" rech_tarifcode="O60D" rech_ext_faktor="0.45" rech_basispreis="9840" rech_einheit="0.555" rech_menge="1"/>
+			<Rechnung rech_id="2" rech_kostentraeger="6" rech_betrag="3003.66" rech_tarifcode="O60D" rech_ext_faktor="0.55" rech_basispreis="9840"/>
+		</Fall>
+		<Fall fall_id="5443547">
+			<Administratives burnr_gesv="7584215" abc_fall="A" geschlecht="2" alter="37" wohnland="DEU" nationalitaet="DEU" eintrittsdatum="20230413" eintritt_aufenthalt="1" eintrittsart="1" einw_instanz="1" liegeklasse="3" versicherungsklasse="3" admin_urlaub="42" hauptleistungsstelle="M500" grundversicherung="5" tarif="5" austrittsdatum="20230513" austrittsentscheid="2" austritt_aufenthalt="9" austritt_behandlung="4"/>
+			<Psychiatrie psy_zivilstand="4" psy_eintritt_aufenthalt="22" psy_eintritt_teilzeit="0" psy_eintritt_vollzeit="0" psy_eintritt_arbeitslos="1" psy_eintritt_hausarbeit="0" psy_eintritt_ausbildung="0" psy_eintritt_reha="0" psy_eintritt_rente="1" psy_eintritt_gesch_arbeit="0" psy_eintritt_unbekannt="0" psy_schulbildung="22" psy_einweisende_instanz="11" psy_fu="1" psy_behandlung="1" psy_pp_neuroleptika="0" psy_pp_depotneuroleptika="0" psy_pp_antidepressiva="0" psy_pp_tranquilizer="1" psy_pp_hypnotika="0" psy_pp_antiepileptika="0" psy_pp_lithium="0" psy_pp_substitution="0" psy_pp_suchtaversion="0" psy_pp_antiparkinson="0" psy_pp_andere="1" psy_pp_koerper_medi="0" psy_entsch_austritt="20" psy_austritt_aufenthalt="00" psy_austritt_behandlung="0" psy_behandlungsbereich="1"/>
+			<KostentraegerFall ktr_typ="1" ktr_60="38749.36" ktr_3801="8412" ktr_3802="5412" ktr_10="540" ktr_30="2545" ktr_32="7548.20" ktr_35="456.12" ktr_36="245" ktr_39="7498" ktr_40="2145" ktr_41="4211" ktr_42="1123" ktr_43="845" ktr_10_ank="40" ktr_30_ank="185" ktr_32_ank="658" ktr_35_ank="65.15" ktr_36_ank="21" ktr_39_ank="856" ktr_40_ank="250" ktr_41_ank="501" ktr_42_ank="121" ktr_43_ank="90" ktr_44_vkl="3012" ktr_44_rekole="2787.15" ktr_47="125" ktr_47_ank="95"/>
+			<Diagnose diagnose_id="1" diagnose_kode="F29" diagnose_poa="1"/>
+			<Behandlung behandlung_id="1" behandlung_chop="9413" behandlung_beginn="20230413"/>
+			<Behandlung behandlung_id="2" behandlung_chop="943510" behandlung_beginn="20230415"/>
+			<Medikament medi_id="1" medi_atc="J06BB04" medi_verabreichungsart="IV" medi_dosis="17000" medi_einheit="U"/>
+			<Rechnung rech_id="1" rech_kostentraeger="4" rech_betrag="-27946.2" rech_tariftyp="030" rech_tarifcode="TP28B" rech_ext_faktor="-1" rech_basispreis="940" rech_einheit="-29.73" rech_menge="1"/>
+			<Rechnung rech_id="2" rech_kostentraeger="4" rech_betrag="10803.16" rech_tariftyp="011" rech_tarifcode="ZE-2022-28.59" rech_ext_faktor="1" rech_basispreis="-10803.16" rech_einheit="1" rech_menge="-1"/>
+			<Patientenbewegung episode_id="1" episode_beginn="2023041316" episode_ende="2023042011" episode_art="1" burnr_episode="52704341"/>
+			<Patientenbewegung episode_id="2" episode_beginn="2023042009" episode_ende="2023042022" episode_art="4"/>
+			<Patientenbewegung episode_id="3" episode_beginn="2023042022" episode_ende="2023042211" episode_art="1" burnr_episode="52704341"/>
+			<Patientenbewegung episode_id="4" episode_beginn="2023042211" episode_ende="2023042314" episode_art="1" burnr_episode="75584898"/>
+			<Patientenbewegung episode_id="5" episode_beginn="2023042314" episode_ende="2023042512" episode_art="3"/>
+			<Patientenbewegung episode_id="6" episode_beginn="2023042512" episode_ende="2023042910" episode_art="1" burnr_episode="52704341"/>
+			<Patientenbewegung episode_id="7" episode_beginn="2023042910" episode_ende="2023050322" episode_art="2" wiedereintritt_aufenthalt="1" grund_wiedereintritt="1"/>
+			<Patientenbewegung episode_id="8" episode_beginn="2023050322" episode_ende="2023051309" episode_art="1" burnr_episode="52704341"/>
+			<Kantonsdaten Kanton_Zusatzdaten="AG"/>
+		</Fall>
+		<KostentraegerStandort ktr_typ="10" ktr_beschr="Parkplatz/Parking/Parcheggio" ktr_68="145746.20" ktr_44="24589.12" ktr_nicht_pb="12575.19" ktr_44_ank="98543.82" ktr_44_vkl="11245.21" ktr_methodik="1" ktr_480="1230" ktr_485="450" ktr_486="450"/>
+	</Standort>
+	<Standort burnr="78457862">
+		<KostentraegerStandort ktr_typ="508" ktr_beschr="Spitalpfarrerin/Pasteur de l'hôpital/Pastore dell'ospedale" ktr_697="78475.21" ktr_44="2115.57" ktr_nicht_pb="69451.45" ktr_44_ank="5487.12" ktr_44_vkl="6024.12" ktr_methodik="1" ktr_47="1250" ktr_47_ank="950" ktr_al_vvg="2510"/>
+	</Standort>
+	<KostentraegerUnternehmen ktr_typ="502" ktr_beschr="Notrufzentrale/Centrale d'appel d'urgence/Centro chiamate d'emergenza" ktr_68="545872.30" ktr_44="129144.23" ktr_nicht_pb="318762.12" ktr_44_ank="105746.95" ktr_44_vkl="110548.51" ktr_methodik="1"/>
+	<KostentraegerUnternehmen ktr_typ="301" ktr_61="4547642.12" ktr_62="3487594.96" ktr_10="451243" ktr_20="324534" ktr_23="12246" ktr_24="4324" ktr_25="2343" ktr_26="3246" ktr_27="4648" ktr_28="3687" ktr_29="147" ktr_30="132434" ktr_31_1_5="45564" ktr_31_6a1="65461" ktr_31_6a2="21334" ktr_31_6b1="12446" ktr_31_6b2="4137" ktr_31_6b3="1792" ktr_31_6b4="3147" ktr_31_6b5="3416" ktr_32="45312" ktr_33="34567" ktr_34="3217" ktr_35="7854" ktr_36="3416" ktr_38="3256" ktr_39="4351" ktr_40="213" ktr_45="34561" ktr_77="13" ktr_10_ank="3145" ktr_20_ank="231" ktr_21_ank="3541" ktr_23_ank="214" ktr_24_ank="13" ktr_25_ank="234" ktr_26_ank="32" ktr_27_ank="348" ktr_28_ank="134" ktr_29_ank="243" ktr_30_ank="479" ktr_31_1_5_ank="3465" ktr_31_6a1_ank="4553" ktr_31_6a2_ank="3435" ktr_31_6b1_ank="3234" ktr_31_6b2_ank="4864" ktr_31_6b3_ank="3434" ktr_31_6b4_ank="346" ktr_31_6b5_ank="648" ktr_32_ank="1234" ktr_33_ank="345" ktr_34_ank="346" ktr_35_ank="4648" ktr_36_ank="348" ktr_38_ank="7694" ktr_39_ank="344" ktr_40_ank="678" ktr_44_ank="687756" ktr_45_ank="654" ktr_77_ank="1" ktr_44_vkl="701241" ktr_kosten_65="47504" ktr_le_ambulant="7534929" ktr_47="12500" ktr_47_ank="9500" ktr_480="12300" ktr_485="4500" ktr_486="4500" ktr_al_vvg="25100"/>
+</Unternehmen>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~
+  ~ Copyright (c) 2017 by Swiss Federal Administration
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information
+  ~ of the Swiss Federal Administration. ("Confidential Information").  You
+  ~ shall not disclose such Confidential Information and shall use
+  ~ it only in accordance with the terms of the license agreement
+  ~ you entered into with the Swiss Federal Administration.
+  -->
+<!-- Spiges XSD Version 1.5 -->
+<xs:schema xmlns:Spiges="http://www.bfs.admin.ch/xmlns/gvs/spiges-ids" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.bfs.admin.ch/xmlns/gvs/spiges-ids" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Unternehmen" type="Spiges:UnternehmenType"/>
+	<xs:complexType name="UnternehmenType">
+		<xs:sequence>
+			<xs:element name="Standort" type="Spiges:StandortType" minOccurs="0" maxOccurs="50">
+				<xs:unique name="unique_fall_id">
+					<xs:selector xpath="Spiges:Fall"/>
+					<xs:field xpath="@fall_id"/>
+				</xs:unique>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ent_id" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:positiveInteger">
+					<xs:maxInclusive value="999999999"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="version" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="1.4"/>
+					<xs:enumeration value="1.5"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="StandortType">
+		<xs:sequence>
+			<xs:element name="Fall" type="Spiges:FallType" minOccurs="0" maxOccurs="200000"/>
+		</xs:sequence>
+		<xs:attribute name="burnr" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="9"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="FallType">
+		<xs:sequence>
+			<xs:element name="Personenidentifikatoren" type="Spiges:PersonenidentifikatorenType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="fall_id" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:positiveInteger">
+					<xs:maxInclusive value="10000000000000000"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="PersonenidentifikatorenType">
+		<xs:attribute name="ahv" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:positiveInteger">
+					<xs:maxInclusive value="9999999999999"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="geburtsdatum" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:positiveInteger">
+					<xs:pattern value="(\d{4})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

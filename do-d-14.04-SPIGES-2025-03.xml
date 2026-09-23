@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+D: SpiGes XML-Beispieldatei (Identifikatoren): 
+Einfaches Beispiel einem Standort mit zwei Fällen
+F: Fichier d'exemple XML SpiGes (identifiants) : 
+Exemple simple d'un site avec deux cas 
+I: File di esempio SpiGes XML (identificatori): 
+Semplice esempio di una sede con due casi 
+-->
+<Unternehmen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.bfs.admin.ch/xmlns/gvs/spiges-ids" ent_id="845724581" version="1.5">
+	<Standort burnr="71548624">
+		<Fall fall_id="5443546">
+			<Personenidentifikatoren ahv="7561234567897" geburtsdatum="20220412"/>
+		</Fall>
+		<Fall fall_id="5443547">
+			<Personenidentifikatoren ahv="7561111111119" geburtsdatum="19850117"/>
+		</Fall>
+	</Standort>
+</Unternehmen>
