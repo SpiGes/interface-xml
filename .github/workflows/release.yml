@@ -1,0 +1,107 @@
+name: Create SpiGes Interface XML Release
+
+on:
+  workflow_dispatch:
+
+env:
+  # Files released: all tracked files at the repository root, except dotfiles and the README.
+  # They are uploaded under their original names.
+  RELEASE_PATHSPEC: ":(glob)* :!:.* :!:README.md"
+
+jobs:
+  generate-version:
+    runs-on: ubuntu-latest
+    outputs:
+      new_version: ${{ steps.set_version.outputs.new_version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check that there are files to release
+        run: |
+          mapfile -t files < <(git ls-files -- $RELEASE_PATHSPEC)
+
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No file to release found at the repository root"
+            exit 1
+          fi
+
+          printf 'File to release: %s\n' "${files[@]}"
+
+      - name: Get latest tag and compute next version with 'v' prefix
+        id: set_version
+        run: |
+          echo "Fetching tags..."
+          git fetch --tags
+          
+          echo "Determining latest version..."
+          latest_tag=$(git tag | grep -E '^v[0-9]+$' | sed 's/v//' | sort -n | tail -n1)
+          
+          if [ -z "$latest_tag" ]; then
+            next_numeric_version=1
+          else
+            next_numeric_version=$((latest_tag + 1))
+          fi
+          
+          version_tag="v$next_numeric_version"
+          
+          echo "Latest numeric tag: ${latest_tag:-none}"
+          echo "Next version tag: $version_tag"
+          
+          echo "new_version=$version_tag" >> "$GITHUB_OUTPUT"
+
+  create-release:
+    needs: generate-version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Release
+        id: create_release
+        env:
+          RELEASE_VERSION: ${{ needs.generate-version.outputs.new_version }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Creating release version: $RELEASE_VERSION"
+          gh release create "$RELEASE_VERSION" --title "$RELEASE_VERSION" --notes "Automated release for version $RELEASE_VERSION" --draft
+
+  upload-files:
+    needs: [create-release, generate-version]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Upload files to Release
+        env:
+          RELEASE_VERSION: ${{ needs.generate-version.outputs.new_version }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mapfile -t files < <(git ls-files -- $RELEASE_PATHSPEC)
+
+          printf 'Uploading %s to release '"$RELEASE_VERSION"'\n' "${files[@]}"
+          gh release upload "$RELEASE_VERSION" "${files[@]}" --clobber
+
+  publish-release:
+    needs: [upload-files, generate-version]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Publish Release
+        env:
+          RELEASE_VERSION: ${{ needs.generate-version.outputs.new_version }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Publishing release version: $RELEASE_VERSION"
+          gh release edit "$RELEASE_VERSION" --draft=false
